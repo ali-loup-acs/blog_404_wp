@@ -40,11 +40,8 @@ module.exports = function(grunt) {
           tasks: [], // … la tache à effectué NON UTILISE POUR l'INSTANT
         },
         css: {
-          files: 'assets/css/*.scss',
+          files: ['assets/css/*.scss'],
           tasks: ['sass'],
-          options: {
-            livereload: true,
-          },
         },
       },
 
