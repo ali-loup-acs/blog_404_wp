@@ -1393,7 +1393,7 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
   color: #333333;
@@ -6552,7 +6552,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6674,7 +6674,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7334,6 +7334,14 @@ button.close {
     display: none !important;
   }
 }
+@font-face {
+  font-family: 'SpecialElite';
+  src: url("../fonts/SpecialElite.ttf");
+}
+@font-face {
+  font-family: 'Dosis';
+  src: url("../fonts/Dosis-Regular.ttf");
+}
 .row-mas {
   -moz-column-width: 25em;
   -webkit-column-width: 18em;
@@ -7343,15 +7351,78 @@ button.close {
 
 .item {
   display: inline-block;
-  padding: .25rem;
+  padding: 0.30rem;
   width: 100%;
 }
 
-body {
-  background: white;
+#body_home #header_home .navbar-brand {
+  font-style: "SpecialElite";
+  font-size: 3em;
+  font-weight: 300;
+  text-transform: uppercase;
 }
-body header {
-  color: black;
+#body_home #header_home .navbar-brand img {
+  display: inline;
+  height: 3rem;
+}
+#body_home #main_home header {
+  display: inline;
+}
+#body_home #main_home header h2 {
+  font-family: "SpecialElite";
+  font-size: 3em;
+  text-transform: uppercase;
+}
+#body_home #main_home header .bg_input {
+  margin-top: 2%;
+}
+#body_home #main_home header .bg_input input {
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: rgba(66, 66, 66, 0.4);
+}
+#body_home #main_home .bg_article .item {
+  padding: 7%;
+  border: 1px solid black;
+  margin-bottom: 1.5rem;
+}
+#body_home #main_home .bg_article .item h3 {
+  text-align: center;
+  font-family: "SpecialElite";
+  font-size: 2em;
+}
+#body_home #main_home .bg_article .item p {
+  font-size: 2rem;
+}
+#body_home #main_home .bg_article .item h2 {
+  font-family: "SpecialElite";
+}
+#body_home #main_home .bg_article .item a,
+#body_home #main_home .bg_article .item a:active,
+#body_home #main_home .bg_article .item a:focus,
+#body_home #main_home .bg_article .item a:hover,
+#body_home #main_home .bg_article .item a:visited {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+#body_home #main_home .bg_chevron {
+  color: #ff1d24;
+}
+#body_home #footer_home {
+  margin-top: 4%;
+  background-color: #424242;
+}
+#body_home #footer_home h3 {
+  color: white;
+}
+#body_home #footer_home ul {
+  list-style: none;
+}
+#body_home #footer_home ul li a {
+  color: white;
+}
+#body_home #footer_copyright {
+  background-color: #000;
 }
 
 /*# sourceMappingURL=style.css.map */
