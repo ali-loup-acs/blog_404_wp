@@ -9,27 +9,27 @@
 	<title>Blog 404</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/ficheAuteur.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
 
-  <header>
-  </header>
-  <main id="auteurs">
+<?php include('template/header.html') ?>
+
+ <main id="auteurs">
 		<div class="container">
-					<h2><B>Nom: </B>Yohann Coupannec</h2>
+					<h2>Nom :Yohann Coupannec</h2>
 			<div class="row">
 			<div class="col-md-6 Image">
 					<img src="assets/images/testAuteur.jpeg">
 				</div>
 				<div class="col-md-6 Infos">
-					<h3><B>Pseudo: </B>Youyou</h3>
-					<h3><B>Cheveux: </B>Blond</h3>
-					<h3><B>Yeux: </B>2</h3>
-					<h3><B>Signes Distinctifs: </B>Quelques uns</h3>
-					<h3><B>Méfaits: </B>A utilisé Back Pack</h3>
-					<h3><B>Articles:</B></h3>
+					<p>Pseudo: Youyou</p>
+					<p>Cheveux: Blond</p>
+					<p>Yeux: 2</p>
+					<p>Signes Distinctifs:Quelques uns</p>
+					<p>Méfaits:A utilisé Back Pack</p>
+					<p>Articles:</p>
 						<ul>
 							<li>Article 1</li>
 							<li>Article 2</li>
@@ -43,8 +43,8 @@
 
 
   </main>
-  <footer>
-  </footer>
+
+	<?php include('template/footer.html') ?>
 
 </body>
 </html>

@@ -1,5 +1,4 @@
 @import "stylesheets/bootstrap";
-$blog_rouge: #ff1d24;
 @font-face {
     font-family: 'SpecialElite';
     src: url('../fonts/SpecialElite.ttf');
@@ -19,10 +18,68 @@ $blog_rouge: #ff1d24;
 .item {
     display: inline-block;
     padding: 0.30rem;
-    width: 100%;
+    width: 97%;
+    margin-left: 1.5%;
+}
+// Header Promo
+
+
+#zoneFlex404{
+  overflow-x: hidden;
+
+	width: 99vw;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: flex-end;
+	align-items: stretch;
+	justify-content: space-between;
+	background-color: #fff;
+	background-image: url('../images/lines.png');
+	background-size: auto 5%;
+	overflow: hidden;
+
+.carte, .carteFixe{
+	width: 15%;
+	height: 33%;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.carte img, .carteFixe img{
+
+	width: 100%;
+	max-height: 100%;
+}
+}
+
+
+@media screen and (max-width: 640px) {
+  #zoneFlex404{
+    height: 33vh;
+    background-size: auto 20%;
+	.carte {
+		display:none;
+	}
+
+	.carteFixe         {
+		padding: auto;
+		width: 50%;
+		height: 100%;
+	}
+}
+
 }
 
 #body_home {
+  overflow-x: hidden;
     #header_home {
         .navbar-brand {
             font-style: $font_title;
@@ -97,10 +154,13 @@ $blog_rouge: #ff1d24;
     #auteurs{
       h2{
         margin-bottom: 3%;
+        font-family: $font_title;
+
       }
-      h3{
+      p{
         margin-top: 0%;
         margin-bottom: 4%;
+        font-family: $font_body;
       }
     }
   #footer_home
@@ -128,5 +188,27 @@ $blog_rouge: #ff1d24;
   #footer_copyright
   {
     background-color:$blog_copyright;
+    .logo
+      {
+        a
+        {
+          img
+          {
+            display:inline-block;
+            height: 3vh;
+            margin-top:3%;
+            margin-left: 4%;
+          }
+          svg
+          {
+            display:inline-block;
+            height: 7vh;
+          }
+        }
+      }
+      .sociaux
+      {
+        margin-top:1%;
+      }
   }
 }
