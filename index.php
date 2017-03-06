@@ -14,6 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="assets/js/js.js"></script>
+
     <!-- ************************** script creation zoneFlex404 ************************** -->
 
 
@@ -36,8 +37,8 @@
                 <h2 class="col-md-8">A la Une</h2>
 
                 <div class="bg_input col-md-4 hidden-xs hidden-sm pull-right">
-                    <input type="text" name="author" value="" placeholder="Nom de l'auteur">
-                    <input type="text" name="category" value="" placeholder="Nom de la catégorie">
+                    <input type="text" name="author" value="Nom de l'auteur" placeholder="Nom de l'auteur">
+                    <input type="text" name="category" value="Nom de la catégorie" placeholder="Nom de la catégorie">
                 </div>
 
             </header>
@@ -160,7 +161,7 @@
 
         </section>
     </main>
-    
+
 <?php include('template/footer.html') ?>
 
 </body>
