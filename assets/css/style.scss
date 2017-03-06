@@ -1,11 +1,214 @@
+@import "stylesheets/bootstrap";
+@font-face {
+    font-family: 'SpecialElite';
+    src: url('../fonts/SpecialElite.ttf');
+}
+@font-face {
+    font-family: 'Dosis';
+    src: url('../fonts/Dosis-Regular.ttf');
+}
+// MASSONNERY
 .row-mas {
- -moz-column-width: 25em;
- -webkit-column-width: 18em;
- -moz-column-gap: 1em;
- -webkit-column-gap:1em;
-  }
-	.item {
-	 display: inline-block;
-	 padding:  .25rem;
-	 width:  100%;
+    -moz-column-width: 25em;
+    -webkit-column-width: 18em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+}
+
+.item {
+    display: inline-block;
+    padding: 0.30rem;
+    width: 97%;
+    margin-left: 1.5%;
+}
+// Header Promo
+
+
+#zoneFlex404{
+  overflow-x: hidden;
+
+	width: 99vw;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: flex-end;
+	align-items: stretch;
+	justify-content: space-between;
+	background-color: #fff;
+	background-image: url('../images/lines.png');
+	background-size: auto 5%;
+	overflow: hidden;
+
+.carte, .carteFixe{
+	width: 15%;
+	height: 33%;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.carte img, .carteFixe img{
+
+	width: 100%;
+	max-height: 100%;
+}
+}
+
+
+@media screen and (max-width: 640px) {
+  #zoneFlex404{
+    height: 33vh;
+    background-size: auto 20%;
+	.carte {
+		display:none;
 	}
+
+	.carteFixe         {
+		padding: auto;
+		width: 50%;
+		height: 100%;
+	}
+}
+
+}
+
+#body_home {
+  overflow-x: hidden;
+    #header_home {
+        .navbar-brand {
+            font-style: $font_title;
+            font-size: $navbar_font_size;
+            font-weight: 300;
+            text-transform: uppercase;
+
+            img {
+                display: inline;
+                height: 3rem;
+            }
+        }
+    }
+
+    #main_home {
+        header {
+            display: inline;
+
+            h2 {
+                font-family: $font_title;
+                font-size: $navbar_font_size;
+                text-transform: uppercase;
+            }
+
+            .bg_input {
+                margin-top: 2%;
+
+                input {
+                    border: none;
+                    border-bottom: 1px solid black;
+                    background-color: rgba(66,66,66,0.4);
+                }
+            }
+        }
+
+        .bg_article {
+            .item {
+                padding: 7%;
+                border: 1px solid black;
+                margin-bottom: 1.5rem;
+
+                h3 {
+                    text-align: center;
+                    font-family: $font_title;
+                    font-size: 2em;
+                }
+
+                p {
+                    font-size: 2rem;
+                }
+
+                h2 {
+                    font-family: $font_title;
+                }
+
+                a,
+                a:active,
+                a:focus,
+                a:hover,
+                a:visited {
+                    text-decoration: none;
+                    text-transform: uppercase;
+                }
+            }
+          }
+
+          .bg_chevron
+          {
+              color:$blog_red;
+          }
+    }
+    #auteurs{
+      h2{
+        margin-bottom: 3%;
+        font-family: $font_title;
+
+      }
+      p{
+        margin-top: 0%;
+        margin-bottom: 4%;
+        font-family: $font_body;
+      }
+    }
+  #footer_home
+  {
+    margin-top: 4%;
+    background-color:$blog_footer;
+    h3
+    {
+      color:white;
+    }
+    ul
+    {
+      list-style: none;
+      li
+      {
+        a{
+          color:white;
+        }
+      }
+    }
+
+
+
+  }
+  #footer_copyright
+  {
+    background-color:$blog_copyright;
+    .logo
+      {
+        a
+        {
+          img
+          {
+            display:inline-block;
+            height: 3vh;
+            margin-top:3%;
+            margin-left: 4%;
+          }
+          svg
+          {
+            display:inline-block;
+            height: 7vh;
+          }
+        }
+      }
+      .sociaux
+      {
+        margin-top:1%;
+      }
+  }
+}
