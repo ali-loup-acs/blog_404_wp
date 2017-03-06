@@ -20,9 +20,9 @@
 				var html = '<div id="zoneFlex404">';
 				var i = 0;
 				for (i = 0; i < 10; i++) {
-						html += '<div class="carte"><a href="#"><img src="assets/images/promo404-'+ order[i] +'.png"></a></div>';
+						html += '<div class="carte"><a href="./ficheAuteurs.php"><img src="assets/images/promo404-'+ order[i] +'.png"></a></div>';
 				}
-				html += '<div class="carteFixe"><img src="assets/images/logo/404.png"></div>';
+				html += '<div class="carteFixe"><a href="./index.php"><img src="assets/images/logo/404.png"></a></div>';
 				for (i = 10; i < 17; i++) {
 					if(i==10) {
 						html += '<div class="carteFixe">';
@@ -31,7 +31,7 @@
 						html += '<div class="carte">'
 					}
 
-					html += '<a href="#"><img src="assets/images/promo404-'+ order[i] +'.png"></a></div>';
+					html += '<a href="./ficheAuteurs.php"><img src="assets/images/promo404-'+ order[i] +'.png"></a></div>';
 
 				}
 				html += '</div>';

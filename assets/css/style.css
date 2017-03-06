@@ -7344,7 +7344,7 @@ button.close {
 }
 .row-mas {
   -moz-column-width: 25em;
-  -webkit-column-width: 18em;
+  -webkit-column-width: 25em;
   -moz-column-gap: 1em;
   -webkit-column-gap: 1em;
 }
@@ -7400,98 +7400,101 @@ button.close {
     height: 100%;
   }
 }
-#body_home {
+ body {
   overflow-x: hidden;
 }
-#body_home #header_home .navbar-brand {
+ #header_home .navbar-brand {
   font-style: "SpecialElite";
   font-size: 3em;
   font-weight: 300;
   text-transform: uppercase;
 }
-#body_home #header_home .navbar-brand img {
+ #header_home .navbar-brand img {
   display: inline;
   height: 3rem;
 }
-#body_home #main_home header {
+ #main_home header {
   display: inline;
 }
-#body_home #main_home header h2 {
+ #main_home header h2 {
   font-family: "SpecialElite";
   font-size: 3em;
   text-transform: uppercase;
 }
-#body_home #main_home header .bg_input {
+ #main_home header .bg_input {
   margin-top: 2%;
 }
-#body_home #main_home header .bg_input input {
+ #main_home header .bg_input input {
   border: none;
   border-bottom: 1px solid black;
   background-color: rgba(66, 66, 66, 0.4);
 }
-#body_home #main_home .bg_article .item {
+#main_home header .bg_input input::placeholder {
+    color:white;
+}
+ #main_home .bg_article .item {
   padding: 7%;
   border: 1px solid black;
   margin-bottom: 1.5rem;
 }
-#body_home #main_home .bg_article .item h3 {
+ #main_home .bg_article .item h3 {
   text-align: center;
   font-family: "SpecialElite";
   font-size: 2em;
 }
-#body_home #main_home .bg_article .item p {
+ #main_home .bg_article .item p {
   font-size: 2rem;
 }
-#body_home #main_home .bg_article .item h2 {
+ #main_home .bg_article .item h2 {
   font-family: "SpecialElite";
 }
-#body_home #main_home .bg_article .item a,
-#body_home #main_home .bg_article .item a:active,
-#body_home #main_home .bg_article .item a:focus,
-#body_home #main_home .bg_article .item a:hover,
-#body_home #main_home .bg_article .item a:visited {
+ #main_home .bg_article .item a,
+ #main_home .bg_article .item a:active,
+ #main_home .bg_article .item a:focus,
+ #main_home .bg_article .item a:hover,
+ #main_home .bg_article .item a:visited {
   text-decoration: none;
   text-transform: uppercase;
 }
-#body_home #main_home .bg_chevron {
+ #main_home .bg_chevron {
   color: #ff1d24;
 }
-#body_home #auteurs h2 {
+ #auteurs h2 {
   margin-bottom: 3%;
   font-family: "SpecialElite";
 }
-#body_home #auteurs p {
+ #auteurs span {
   margin-top: 0%;
   margin-bottom: 4%;
   font-family: "Dosis";
 }
-#body_home #footer_home {
+ #footer_home {
   margin-top: 4%;
   background-color: #424242;
 }
-#body_home #footer_home h3 {
+ #footer_home h3 {
   color: white;
 }
-#body_home #footer_home ul {
+ #footer_home ul {
   list-style: none;
 }
-#body_home #footer_home ul li a {
+ #footer_home ul li a {
   color: white;
 }
-#body_home #footer_copyright {
+ #footer_copyright {
   background-color: #000;
 }
-#body_home #footer_copyright .logo a img {
+ #footer_copyright .logo a img {
   display: inline-block;
   height: 3vh;
   margin-top: 3%;
   margin-left: 4%;
 }
-#body_home #footer_copyright .logo a svg {
+ #footer_copyright .logo a svg {
   display: inline-block;
   height: 7vh;
 }
-#body_home #footer_copyright .sociaux {
+ #footer_copyright .sociaux {
   margin-top: 1%;
 }
 
