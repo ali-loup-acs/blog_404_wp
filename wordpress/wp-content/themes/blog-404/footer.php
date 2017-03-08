@@ -18,26 +18,23 @@
                 <h3>Auteurs</h3>
                 <div class="row">
                     <ul class="col-md-6 col-xs-6">
-                        <li><a href="">Achref K.</a></li>
-                        <li><a href="">Alexandra N.</a></li>
-                        <li><a href="">Ali J.</a></li>
-                        <li><a href="">Anthony T.</a></li>
-                        <li><a href="">Aude F.</a></li>
-                        <li><a href="">Benoit M.</a></li>
-                        <li><a href="">Boussad S.</a></li>
-                        <li><a href="">Geoffrey P.</a></li>
-                        <li><a href="">Houda B.</a></li>
-                        <li><a href="">Jules T.</a></li>
-                    </ul>
-                    <ul class="col-md-6 col-xs-6" >
-                        <li><a href="">Kevin N.</a></li>
-                        <li><a href="">Lea L.</a></li>
-                        <li><a href="">Marie B.</a></li>
-                        <li><a href="">Pauline F.</a></li>
-                        <li><a href="">Quentin P.</a></li>
-                        <li><a href="">Victor A.</a></li>
-                        <li><a href="">Yassin J.</a></li>
-                        <li><a href="">Yohann C.</a></li>
+                    <?php
+					$users = get_users( array( 'fields' => array( 'ID' ) ) );
+					$i = 0;
+					foreach($users as $user_id){
+						if ($i%10==0 && $i!=0){
+							echo "</ul>
+				                    <ul class='col-md-6 col-xs-6' >";
+						}
+						$i++;
+						echo "<li><a href=''>";
+				        $user = get_user_meta ( $user_id->ID);
+				        $first_name = $user["first_name"][0];
+				        $user = get_user_meta ( $user_id->ID);
+				        $last_name = $user["last_name"][0];
+				        echo $first_name ." ".$last_name;
+				        echo "</a></li>";
+				    }?>
                     </ul>
                 </div>
             </article>
@@ -45,18 +42,30 @@
                 <h3>Catégorie</h3>
                 <div class="row">
                     <ul class="col-md-6 col-xs-6">
-                        <li><a href="">Culture</a></li>
-                        <li><a href="">Design</a></li>
-                        <li><a href="">E-commerce</a></li>
-                        <li><a href="">Editeur</a></li>
-                        <li><a href="">eSport</a></li>
-                    </ul>
-                    <ul class="col-md-6 col-xs-6">
-                        <li><a href="">Nouvelle Tech</a></li>
-                        <li><a href="">Site</a></li>
-                        <li><a href="">Tuto</a></li>
-                        <li><a href="">Uncategorized</a></li>
-                        <li><a href="">Web</a></li>
+                       	<?php
+					
+					$categories = get_categories( array(
+					    'orderby' => 'name',
+					    'order'   => 'ASC'
+					) );
+					 $i = 0;
+					foreach( $categories as $category ) {
+						if ($i%10==0 && $i!=0){
+												echo "</ul>
+									                    <ul class='col-md-6 col-xs-6' >";
+											}
+											$i++;
+					    $category_link = sprintf( 
+					        '<a href="%1$s" alt="%2$s">%3$s</a>',
+					        esc_url( get_category_link( $category->term_id ) ),
+					        esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ),
+					        esc_html( $category->name )
+					    );
+					     
+					    echo '<li>' . sprintf(  $category_link ) . '</li> ';
+					   
+					   
+					} ?>
                     </ul>
                 </div>
             </article>

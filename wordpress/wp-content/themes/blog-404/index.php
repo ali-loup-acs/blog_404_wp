@@ -19,10 +19,10 @@ get_header(); ?>
             <header class="col-md-12">
                 <h2 class="col-md-8">A la Une</h2>
 
-                <div class="bg_input col-md-4 hidden-xs hidden-sm pull-right">
+                <!-- <div class="bg_input col-md-4 hidden-xs hidden-sm pull-right">
                     <input type="text" name="author" value="" placeholder="Nom de l'auteur">
                     <input type="text" name="category" value="" placeholder="Nom de la catégorie">
-                </div>
+                </div> -->
 
             </header>
 
@@ -41,7 +41,7 @@ get_header(); ?>
 
 				<?php endwhile; ?>
 
-				<?php twentyeleven_content_nav( 'nav-below' ); ?>
+				
 
 			<?php else : ?>
 
@@ -59,7 +59,8 @@ get_header(); ?>
 			<?php endif; ?>
 
 			</div><!-- #content -->
+			<?php twentyeleven_content_nav( 'nav-below' ); ?>
 		<!-- </div>#primary -->
 
-<!-- <?php get_sidebar(); ?> -->
+ <?php get_sidebar(); ?> 
 <?php get_footer(); ?>
