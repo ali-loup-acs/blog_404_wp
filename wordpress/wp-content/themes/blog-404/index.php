@@ -62,5 +62,5 @@ get_header(); ?>
 			<?php twentyeleven_content_nav( 'nav-below' ); ?>
 		<!-- </div>#primary -->
 
- <?php get_sidebar(); ?> 
+  
 <?php get_footer(); ?>
