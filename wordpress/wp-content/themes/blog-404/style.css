@@ -7357,7 +7357,7 @@ button.close {
 }
 .row-mas {
   -moz-column-width: 25em;
-  -webkit-column-width: 18em;
+  -webkit-column-width: 25em;
   -moz-column-gap: 1em;
   -webkit-column-gap: 1em;
 }
