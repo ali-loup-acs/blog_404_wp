@@ -87,7 +87,7 @@
 			            <span class="icon-bar"></span>
 			            <span class="icon-bar"></span>
 			        </button>
-					<a class="navbar-brand" href="index.html">Blog <img class="img-reponsive" src="<?php echo get_stylesheet_directory_uri(); ?>/svg/LOGO404.svg" alt="Brand Logo"></a>
+					<a class="navbar-brand" href="<?php echo get_home_url() ?>">Blog <img class="img-reponsive" src="<?php echo get_stylesheet_directory_uri(); ?>/svg/LOGO404.svg" alt="Brand Logo"></a>
 	                </div>
 						
 					<div class="collapse navbar-collapse text-center" id="myNavbar">
