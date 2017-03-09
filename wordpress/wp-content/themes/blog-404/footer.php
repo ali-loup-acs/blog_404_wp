@@ -27,7 +27,7 @@
 				                    <ul class='col-md-6 col-xs-6' >";
 						}
 						$i++;
-						echo "<li><a href=''>";
+						echo '<li><a href="'.esc_url( get_author_posts_url($user_id->ID ) ).'">'; 
 				        $user = get_user_meta ( $user_id->ID);
 				        $first_name = $user["first_name"][0];
 				        $user = get_user_meta ( $user_id->ID);
