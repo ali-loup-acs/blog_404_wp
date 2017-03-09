@@ -7507,5 +7507,11 @@ body {
 #footer_copyright .sociaux {
   margin-top: 1%;
 }
+/*add by vick*/
+h3{
+    text-align: center;
+    font-family: "SpecialElite";
+    font-size: 2em;
+}
 
 /*# sourceMappingURL=style.css.map */

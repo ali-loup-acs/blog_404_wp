@@ -55,6 +55,7 @@ function twentyeleven_posted_on() {
 	
 	$user = get_user_meta( get_the_author_meta( 'ID' ) ) ;
     $name = $user["first_name"][0]." ".$user["last_name"][0];
+
 	printf( __( '<div><span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span></div> <div><span class="sep">Posté le </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="by-author"></span></div> ', 'twentyeleven' ),
 	esc_url( get_permalink() ),
 	esc_attr( get_the_time() ),
@@ -65,8 +66,6 @@ function twentyeleven_posted_on() {
 	$name
 	);
 }
-
-
 
 
 

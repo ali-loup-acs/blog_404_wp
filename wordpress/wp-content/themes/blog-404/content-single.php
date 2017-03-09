@@ -9,22 +9,29 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("container"); ?>>
+    
 	<header class="entry-header">
-		<h1 class="entry-title text-center"><?php the_title(); ?></h1>
+		<h3 class="entry-title text-center"><?php the_title(); ?></h3>
 
 		<?php if ( 'post' == get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php twentyeleven_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
+        
+		 <div class="entry-meta text-center">
+             <span class="text-muted"><?php twentyeleven_posted_on(); ?></span>
+        </div><!-- .entry-meta -->
+        <hr>
+        <?php endif; ?>
 	</header><!-- .entry-header -->
+ 
+    <div class ="row">
+	   <div class="entry-content col-md-10 col-md-push-1 ">
+		  <?php the_content(); ?>
+		  <?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
+	   </div><!-- .entry-content -->
+    </div>
+    
+    <hr>
 
-	<div class="entry-content">
-		<?php the_content(); ?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-meta">
+	<footer class="entry-meta text-center text-muted">
 		<?php
 			/* translators: used between list items, there is a space after the comma */
 			$categories_list = get_the_category_list( __( ', ', 'twentyeleven' ) );
