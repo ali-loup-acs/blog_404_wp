@@ -16,7 +16,7 @@ function theme_enqueue_styles() {
  * @return int (Maybe) modified excerpt length.
  */
 function wpdocs_custom_excerpt_length( $length ) {
-    return rand(20,200);
+    return 50; //rand(20,100)
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
@@ -34,6 +34,17 @@ add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
 
 
 /**
+ * Return a "Continue Reading" link for excerpts
+ *
+ * @since Twenty Eleven 1.0
+ *
+ * @return string The "Continue Reading" HTML link.
+ */
+function twentyeleven_continue_reading_link() {
+	return ' <div class="pull-right"><a href="'. esc_url( get_permalink() ) . '">' . __( 'READ MORE ', 'twentyeleven' ) . '</a></div>';
+}
+
+/**
  * Print HTML with meta information for the current post-date/time and author.
  *
  * Create your own twentyeleven_posted_on to override in a child theme
@@ -44,7 +55,8 @@ function twentyeleven_posted_on() {
 	
 	$user = get_user_meta( get_the_author_meta( 'ID' ) ) ;
     $name = $user["first_name"][0]." ".$user["last_name"][0];
-	printf( __( '<span class="sep">Posté le </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="by-author"> <span class="sep"> par </span> <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'twentyeleven' ),
+
+	printf( __( '<div><span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span></div> <div><span class="sep">Posté le </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="by-author"></span></div> ', 'twentyeleven' ),
 	esc_url( get_permalink() ),
 	esc_attr( get_the_time() ),
 	esc_attr( get_the_date( 'c' ) ),
@@ -54,8 +66,6 @@ function twentyeleven_posted_on() {
 	$name
 	);
 }
-
-
 
 
 

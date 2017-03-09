@@ -70,7 +70,7 @@
 ?>
 </head>
 
-<body <?php body_class(); ?> onload="constructHeader();">
+<body <?php body_class(); if( is_home() || is_front_page() ) echo " onload='constructHeader();'";?> >
 <div id="zoneSpeHome">
 
 		<!-- ************************** zone de portraits ************************** -->
