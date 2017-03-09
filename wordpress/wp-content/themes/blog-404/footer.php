@@ -129,7 +129,7 @@
 	    }
 
 		function constructHeader(){
-			if(1){ /*si c'est la page accueil alors on construit la zone de portraits */
+			//if(1){ /*si c'est la page accueil alors on construit la zone de portraits */
 				var order = randString();
 				console.log(order);
 
@@ -137,9 +137,9 @@
 				var html = '<div id="zoneFlex404">';
 				var i = 0;
 				for (i = 0; i < 10; i++) {
-						html += '<div class="carte"><a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/promo404-'+ order[i] +'.png"></a></div>';
+						html += '<div class="carte"><a href="<?php echo get_author_posts_url(1); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/promo404-'+ order[i] +'.png"></a></div>';
 				}
-				html += '<div class="carteFixe"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo/404.png"></div>';
+				html += '<div class="carteFixe"><a href="<?php echo get_home_url() ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo/404.png"></a></div>';
 				for (i = 10; i < 17; i++) {
 					if(i==10) {
 						html += '<div class="carteFixe">';
@@ -153,7 +153,7 @@
 				}
 				html += '</div>';
 				elem.innerHTML = html;
-			}
+			//}
 			
 		}
 
