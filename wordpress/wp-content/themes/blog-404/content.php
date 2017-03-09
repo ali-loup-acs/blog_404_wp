@@ -12,7 +12,7 @@
         <header class="entry-header">
             <?php if ( is_sticky() ) : ?>
                 <hgroup>
-                    <h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+                    <h2 class="entry-title "><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
                     <h3 class="entry-format"><?php _e( 'Featured', 'twentyeleven' ); ?></h3>
                 </hgroup>
             <?php else : ?>
