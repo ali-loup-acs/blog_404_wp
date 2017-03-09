@@ -13,14 +13,16 @@ get_header(); ?>
 			<div id="content" role="main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
-
-					<nav id="nav-single">
-						<h3 class="assistive-text"><?php _e( 'Post navigation', 'twentyeleven' ); ?></h3>
-						<span class="nav-previous"><?php previous_post_link( '%link', __( '<span class="meta-nav">&larr;</span> Previous', 'twentyeleven' ) ); ?></span>
-						<span class="nav-next"><?php next_post_link( '%link', __( 'Next <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></span>
-					</nav><!-- #nav-single -->
-
+             
 					<?php get_template_part( 'content-single', get_post_format() ); ?>
+                    <div class="container">
+					<nav id="nav-single">
+				    <div class="row">
+						<span class="nav-previous pull-left "><?php previous_post_link( '%link', __( '<span class="meta-nav">&larr;</span> Previous', 'twentyeleven' ) ); ?></span>
+						<span class="nav-next pull-right"><?php next_post_link( '%link', __( 'Next <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></span>
+                    </div>
+					</nav><!-- #nav-single -->
+                  </div>
 
 					<?php comments_template( '', true ); ?>
 
