@@ -15,7 +15,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'item' ); ?>>
 
 	<header class="entry-header">
-		<h3 class="entry-title"><?php the_title(); ?></h3>
+		<h3 class="entry-title"><a href="<?php echo get_post_permalink(get_the_ID()); ?>"><?php the_title(); ?></a></h3>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
@@ -24,7 +24,7 @@
 			<!-- info about the current post -->
 			<?php twentyeleven_posted_on(); ?>
 		</div>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
-		<?php edit_post_link( __( 'Edit', 'twentyeleven' ), '<span class="edit-link">', '</span>' ); ?>
+		<?php //wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
+		<?php //edit_post_link( __( 'Edit', 'twentyeleven' ), '<span class="edit-link">', '</span>' ); ?>
 	</div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->

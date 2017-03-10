@@ -30,9 +30,8 @@
 						echo '<li><a href="'.esc_url( get_author_posts_url($user_id->ID ) ).'">'; 
 				        $user = get_user_meta ( $user_id->ID);
 				        $first_name = $user["first_name"][0];
-				        $user = get_user_meta ( $user_id->ID);
-				        $last_name = $user["last_name"][0];
-				        echo $first_name ." ".$last_name;
+				        $last_name = $user["last_name"][0][0];
+				        echo $first_name ." ".$last_name.".";
 				        echo "</a></li>";
 				    }?>
                     </ul>
