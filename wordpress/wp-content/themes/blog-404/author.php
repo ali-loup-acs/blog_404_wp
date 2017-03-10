@@ -61,26 +61,73 @@ get_header(); ?>
 					</div><!-- #author-avatar -->
 					<div id="author-description">
 						<h2><?php printf( __( 'About %s', 'twentyeleven' ), get_the_author() ); ?></h2>
-						<?php the_author_meta( 'description' ); ?>
+						<?php
+
+
+						echo "<p>" . the_author_meta( 'description' ) . "</p>";
+
+						 ?>
 					</div><!-- #author-description	-->
+					<div id="author-stack">
+						<?php
+
+
+						echo "<p>" . ( get_the_author_meta( 'stack' ) ) . "</p>";
+
+
+						?>
+					</div>
+					<div id="notes">
+						<?php
+
+						echo '<ul class="col-md-6 col-xs-6" >';
+
+						echo "<li>" . ( get_the_author_meta( 'notes') ) . "</p>";
+
+						echo "</ul>";
+
+						?>
+					</div>
+					<div class="citation">
+						<?php
+
+							echo "<h3>". "Citation Favorite" . "</h3>";
+
+							echo "<blockquote>" . ( get_the_author_meta( 'citation' ) ) . "</blockquote>"
+
+
+						 ?>
+					</div>
+					<div class="twitter">
+					
+
+							<ul class="col-md-6 col-xs-6">
+
+							<li><a href="<?php echo get_the_author_meta('twitter') ?>"><img src=" <?php echo get_stylesheet_directory_uri(); ?>/svg/twitter.svg"></a></li> ;
+							<!-- echo "<li>" . ( get_the_author_meta( 'facebook' ) ) . "</li>";
+							echo "<li>" . ( get_the_author_meta( 'github' ) ) . "</li>";
+ -->
+					<!-- 		echo "</ul>";
+
+							 echo '<li><a href="'.esc_url( get_author_posts_url($user_id->ID ) ).'">'; -->
+						
+					</div>
+					<div class="autreRS">
+						<?php
+
+						echo '<ul>';
+						echo "<li>";
+
+						echo '<a href=' . ( get_the_author_meta( 'autreRS') ) . ">" . "</a>";
+
+						echo "</li>";
+						echo "</ul>";
+
+						 ?>
+					</div>
 				</div><!-- #author-info -->
 				<?php endif; ?>
-
-				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
-
-					<?php
-						/*
-						 * Include the Post-Format-specific template for the content.
-						 * If you want to overload this in a child theme then include a file
-						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-						 */
-						get_template_part( 'content', get_post_format() );
-					?>
-
-				<?php endwhile; ?>
-
-				<?php twentyeleven_content_nav( 'nav-below' ); ?>
+				<!-- <?php twentyeleven_content_nav( 'nav-below' ); ?> -->
 
 			<?php else : ?>
 
@@ -88,14 +135,9 @@ get_header(); ?>
 					<header class="entry-header">
 						<h1 class="entry-title"><?php _e( 'Nothing Found', 'twentyeleven' ); ?></h1>
 					</header><!-- .entry-header -->
-
-					<div class="entry-content">
-						<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'twentyeleven' ); ?></p>
-						<?php get_search_form(); ?>
-					</div><!-- .entry-content -->
 				</article><!-- #post-0 -->
 
-			<?php endif; ?>
+				<?php endif; ?>
 
 			</div><!-- #content -->
 		</section><!-- #primary -->
