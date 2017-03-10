@@ -70,10 +70,11 @@
 ?>
 </head>
 
-<body <?php body_class(); if( is_home() || is_front_page() ) echo " onload='constructHeader();'";?> >
+<body <?php body_class(); ?> >
 <div id="zoneSpeHome">
 
 		<!-- ************************** zone de portraits ************************** -->
+		<?php if( is_home() || is_front_page() ) home_header_custom_random(true);  ?>
 
 	</div>
 <div id="page" class="hfeed">
