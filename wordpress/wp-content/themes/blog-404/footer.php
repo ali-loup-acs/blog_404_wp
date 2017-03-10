@@ -27,7 +27,7 @@
 				                    <ul class='col-md-6 col-xs-6' >";
 						}
 						$i++;
-						echo '<li><a href="'.esc_url( get_author_posts_url($user_id->ID ) ).'">'; 
+						echo '<li><a href="'.esc_url( get_author_posts_url($user_id->ID ) ).'">';
 				        $user = get_user_meta ( $user_id->ID);
 				        $first_name = $user["first_name"][0];
 				        $last_name = $user["last_name"][0][0];
@@ -38,11 +38,11 @@
                 </div>
             </article>
             <article class="col-md-4">
-                <h3>Catégorie</h3>
+                <h3>Catégories</h3>
                 <div class="row">
                     <ul class="col-md-6 col-xs-6">
                        	<?php
-					
+
 					$categories = get_categories( array(
 					    'orderby' => 'name',
 					    'order'   => 'ASC'
@@ -54,16 +54,16 @@
 									                    <ul class='col-md-6 col-xs-6' >";
 											}
 											$i++;
-					    $category_link = sprintf( 
+					    $category_link = sprintf(
 					        '<a href="%1$s" alt="%2$s">%3$s</a>',
 					        esc_url( get_category_link( $category->term_id ) ),
 					        esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ),
 					        esc_html( $category->name )
 					    );
-					     
+
 					    echo '<li>' . sprintf(  $category_link ) . '</li> ';
-					   
-					   
+
+
 					} ?>
                     </ul>
                 </div>
@@ -82,9 +82,9 @@
   </div>
     <article id="footer_copyright" class="row">
         <div class="logo col-md-9">
-          <a href="#"><img class="img-responsive"  src="assets/images/logo/logo_GEN.svg" alt="Logo GEN"></a>
-          <a href="#"><img class="img-responsive"  src="assets/images/logo/logo_OFP.svg" alt="Logo Online"></a>
-          <a href="#"><img class="img-responsive"  src="assets/images/logo/logo_ACS.svg" alt="Logo ACS"></a>
+          <a href="#"><img class="img-responsive"  src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo/logo_GEN.svg" alt="Logo GEN"></a>
+          <a href="#"><img class="img-responsive"  src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo/logo_OFP.svg" alt="Logo Online"></a>
+          <a href="#"><img class="img-responsive"  src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo/logo_ACS.svg" alt="Logo ACS"></a>
         </div>
         <div class="sociaux logo col-md-3 text-center">
           <a href="#"><svg enable-background="new 0 0 48 48" id="Layer_1" version="1.1" viewBox="0 0 48 48" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M29.9,19.5h-4v-2.6c0-1,0.7-1.2,1.1-1.2c0.5,0,2.8,0,2.8,0v-4.4l-3.9,0c-4.4,0-5.3,3.3-5.3,5.3v2.9h-2.5V24  h2.5c0,5.8,0,12.7,0,12.7h5.3c0,0,0-7,0-12.7h3.6L29.9,19.5z" fill="#FFFFFF"/></svg></a>
@@ -114,7 +114,7 @@
 <?php wp_footer(); ?>
 <!-- <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/js.js"></script> -->
 <script type="text/javascript">
-	function randString() {
+	/*function randString() {
 			var T=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
 			for(var i=T.length-1; i>=1; i--){
 				//j reçoit un nombre entier aléatoire entre 0 et i
@@ -128,7 +128,6 @@
 	    }
 
 		function constructHeader(){
-			//if(1){ /*si c'est la page accueil alors on construit la zone de portraits */
 				var order = randString();
 				console.log(order);
 
@@ -136,9 +135,9 @@
 				var html = '<div id="zoneFlex404">';
 				var i = 0;
 				for (i = 0; i < 10; i++) {
-						html += '<div class="carte"><a href="<?php echo get_author_posts_url(1); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/promo404-'+ order[i] +'.png"></a></div>';
+						html += '<div class="carte"><a href="<?php //echo get_author_posts_url(1); ?>"><img class="img-responsive" src="<?php //echo get_stylesheet_directory_uri(); ?>/images/promo404-'+ order[i] +'.png"></a></div>';
 				}
-				html += '<div class="carteFixe"><a href="<?php echo get_home_url() ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo/404.png"></a></div>';
+				html += '<div class="carteFixe"><a href="<?php //echo get_home_url() ?>"><img class="img-responsive" src="<?php //echo get_stylesheet_directory_uri(); ?>/images/logo/404.png"></a></div>';
 				for (i = 10; i < 17; i++) {
 					if(i==10) {
 						html += '<div class="carteFixe">';
@@ -147,14 +146,13 @@
 						html += '<div class="carte">'
 					}
 
-					html += '<a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/promo404-'+ order[i] +'.png"></a></div>';
+					html += '<a href="#"><img class="img-responsive" src="<?php //echo get_stylesheet_directory_uri(); ?>/images/promo404-'+ order[i] +'.png"></a></div>';
 
 				}
 				html += '</div>';
 				elem.innerHTML = html;
-			//}
-			
-		}
+
+		}*/
 
 </script>
 

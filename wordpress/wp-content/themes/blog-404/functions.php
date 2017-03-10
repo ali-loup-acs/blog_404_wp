@@ -10,224 +10,216 @@ function theme_enqueue_styles() {
 }
 
 /**
- * Filter the except length to 20 words.
- *
- * @param int $length Excerpt length.
- * @return int (Maybe) modified excerpt length.
+ * Create a customized headr for homepage
  */
-function wpdocs_custom_excerpt_length( $length ) {
-    return rand(20,50); /*rand(20,100)*/
-}
-add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+function home_header_custom(){
 
+	$users = get_users( array( 'fields' => array( 'ID' ) ) );
+	shuffle($users);
+	//print_r($users);
 
-/**
- * Filter the excerpt "read more" string.
- *
- * @param string $more "Read more" excerpt string.
- * @return string (Maybe) modified "read more" excerpt string.
- */
-function wpdocs_excerpt_more( $more ) {
-    return 'READ MORE';
-}
-add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+	$html = '<div id="zoneFlex404">';
 
+	for ($i = 0; $i < 10; $i++) {
+		$user_url = get_author_posts_url($users[$i]->ID);
+		$user = get_user_meta ( $user_id->ID);
+  		
+		$user_avatar = get_stylesheet_directory_uri()."/images/". strtolower($user["first_name"][0]) . strtolower($user["last_name"][0][0]) . "png";
+		//print_r($user_url." | ".$user_avatar);
+		$html.= '<div class="carte"><a href="'. $user_url .'"><img class="img-responsive" src="'. $user_avatar .'"></a></div>';
+	}
 
-function my_excerpt(){
-global $post;
-$link='<a class="pull-right" href='.get_permalink($post->ID ).'>READ MORE</a>';
-$excerpt=get_the_excerpt($post->ID);
-echo $excerpt.$link;
-return true;
-}
-add_filter('the_excerpt','my_excerpt');
+	$html .= '<div class="carteFixe"><a href="'. get_home_url() .'"><img class="img-responsive" src="'.get_stylesheet_directory_uri(). '/images/logo/404.png"></a></div>';
 
-/**
- * Return a "Continue Reading" link for excerpts
- *
- * @since Twenty Eleven 1.0
- *
- * @return string The "Continue Reading" HTML link.
- */
-function twentyeleven_continue_reading_link() {
-	return '';
-/*	return ' <div class="pull-right"><a href="'. esc_url( get_permalink() ) . '">' . __( 'READ MORE ', 'twentyeleven' ) . '</a></div>';*/
+	for ($i = 10; $i < 17; $i++) {
+		if($i==10) {
+			$html .= '<div class="carteFixe">';
+		}
+		else{
+			$html .= '<div class="carte">';
+		}
+		$user_url = get_author_posts_url($users[$i]->ID);
+		$user_avatar = get_avatar_url($users[$i]->ID);
+		//print_r($user_url." | ".$user_avatar);
+		$html.= '<a href="'. $user_url .'"><img class="img-responsive" src="'. $user_avatar .'"></a></div>';
+	}
+	$html .= '</div>';
+
+	echo $html;
 }
 
-/**
- * Print HTML with meta information for the current post-date/time and author.
- *
- * Create your own twentyeleven_posted_on to override in a child theme
- *
- * @since Twenty Eleven 1.0
- */
-function twentyeleven_posted_on() {
-	
-	$user = get_user_meta( get_the_author_meta( 'ID' ) ) ;
-    $name = $user["first_name"][0]." ".$user["last_name"][0];
-
-	printf( __( '<div><span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span></div> <div><span class="sep">Posté le </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="by-author"></span></div> ', 'twentyeleven' ),
-	esc_url( get_permalink() ),
-	esc_attr( get_the_time() ),
-	esc_attr( get_the_date( 'c' ) ),
-	esc_html( get_the_date("d M Y") ),
-	esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-	esc_attr( sprintf( __( 'Voir tous ses articles', 'twentyeleven' ), get_the_author() ) ),
-	$name
-	);
-}
+if ( ! function_exists( 'wpdocs_custom_excerpt_length' ) ) :
+	/**
+	 * Filter the except length to 20 words.
+	 *
+	 * @param int $length Excerpt length.
+	 * @return int (Maybe) modified excerpt length.
+	 */
+	function wpdocs_custom_excerpt_length( $length ) {
+	    return rand(20,50); /*rand(20,100)*/
+	}
+	add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+endif; // wpdocs_custom_excerpt_length
 
 
+if ( ! function_exists( 'wpdocs_excerpt_more' ) ) :
+	/**
+	 * Filter the excerpt "read more" string.
+	 *
+	 * @param string $more "Read more" excerpt string.
+	 * @return string (Maybe) modified "read more" excerpt string.
+	 */
+	function wpdocs_excerpt_more( $more ) {
+	    return 'READ MORE';
+	}
+	add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+endif; // wpdocs_excerpt_more
 
-function twentyeleven_content_nav( $html_id ) {
-	global $wp_query;
 
-	if ( $wp_query->max_num_pages > 1 ) : ?>
-		<span class="">
-                      <a href="<?php next_posts();?>" class="bg_chevron"><i class="fa fa-chevron-circle-left fa-3x">Back</i></a>
-                    </span>
-            <span class="pull-right">
-                      <a href="<?php previous_posts( );?>" class="bg_chevron"><i class="fa fa-chevron-circle-right fa-3x">Next</i></a>
-            </span>
+if ( ! function_exists( 'my_excerpt' ) ) :
+	function my_excerpt(){
+		global $post;
+		$link='<a class="readMore pull-right" href='.get_permalink($post->ID ).'>Read more</a>';
+		$excerpt=get_the_excerpt($post->ID);
+		echo $excerpt.$link ; 
+	}
+	add_filter('the_excerpt','my_excerpt');
+endif; // my_excerpt
+
+
+if ( ! function_exists( 'twentyeleven_continue_reading_link' ) ) :
+	/**
+	 * Return a blank instead of a "continue readin" link for excerpts
+	 *
+	 * @since Twenty Eleven 1.0
+	 *
+	 * @return string The "Continue Reading" HTML link.
+	 */
+	function twentyeleven_continue_reading_link() {
+		return '';
+	}
+endif; // twentyeleven_continue_reading_link
+
+if ( ! function_exists( 'twentyeleven_posted_on' ) ) :
+	/**
+	 * Print HTML with meta information for the current post-date/time and author.
+	 *
+	 * Create your own twentyeleven_posted_on to override in a child theme
+	 *
+	 * @since Twenty Eleven 1.0
+	 */
+	function twentyeleven_posted_on() {
 		
-	<?php endif;
-}
+		$user = get_user_meta( get_the_author_meta( 'ID' ) ) ;
+	    $name = $user["first_name"][0]." ".$user["last_name"][0][0].".";
+
+		printf( __( '<div class="authorDate"><div><span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span></div> <div><span class="sep">Posté le </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a><span class="by-author"></span></div></div> ', 'twentyeleven' ),
+		esc_url( get_permalink() ),
+		esc_attr( get_the_time() ),
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date("d M Y") ),
+		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+		esc_attr( sprintf( __( 'Voir tous ses articles', 'twentyeleven' ), get_the_author() ) ),
+		$name
+		);
+	}
+endif; // twentyeleven_posted_on
 
 
+
+if ( ! function_exists( 'twentyeleven_content_nav' ) ) :
+	/**
+	 * Print HTML buttons for next and previous articles .
+	 * overwrite the twentyeleven function
+	 */
+	function twentyeleven_content_nav( $html_id ) {
+		global $wp_query;
+
+		if ( $wp_query->max_num_pages > 1 ) : ?>
+			<span class="">
+	                      <a href="<?php next_posts();?>" class="bg_chevron glyphicon glyphicon-chevron-left"></a>
+	                    </span>
+	            <span class="pull-right">
+	                      <a href="<?php previous_posts( );?>" class="bg_chevron glyphicon glyphicon-chevron-right"></a>
+	            </span>
+			
+		<?php endif;
+	}
+endif; // twentyeleven_content_nav
 
  
-function extra_user_profile_fields( $user ) { ?>
+if ( ! function_exists( 'extra_user_profile_fields' ) ) :
+	/**
+	 * Create customized fields for user profil
+	 */
+	function extra_user_profile_fields( $user ) { ?>
+	 
+	    <h3>Titre du bloc d'information</h3>
+	    <table class="form-table">
+	        <tbody>
+	            <tr>
+	                <th>Stack</th>
+	                <td><input class="regular-text" id="stack" type="text" name="stack" value="<?php echo esc_attr( get_the_author_meta( 'stack', $user->ID ) ); ?>" /></td>
+	            </tr> 
+	            <tr>
+	                <th>Notes</th>
+	                <td><input class="regular-text" id="notes" type="text" name="notes" value="<?php echo esc_attr( get_the_author_meta( 'notes', $user->ID ) ); ?>" /></td>
+	            </tr> 
+	            <tr>
+	                <th>Citation</th>
+	                <td><input class="regular-text" id="citation" type="text" name="citation" value="<?php echo esc_attr( get_the_author_meta( 'citation', $user->ID ) ); ?>" /></td>
+	            </tr>            
+	            <tr>
+	                <th>Twitter</th>
+	                <td><input class="regular-text" id="twitter" type="text" name="twitter" value="<?php echo esc_attr( get_the_author_meta( 'twitter', $user->ID ) ); ?>" /></td>
+	            </tr>
+	            <tr>
+	                <th>Facebook</th>
+	                <td><input class="regular-text" id="facebook" type="text" name="facebook" value="<?php echo esc_attr( get_the_author_meta( 'facebook', $user->ID ) ); ?>" /></td>
+	            </tr>
+	            <tr>
+	                <th>Github</th>
+	                <td><input class="regular-text" id="github" type="text" name="github" value="<?php echo esc_attr( get_the_author_meta( 'github', $user->ID ) ); ?>" /></td>
+	            </tr>
+	            <tr>
+	                <th>LinkedIn</th>
+	                <td><input class="regular-text" id="linkedin" type="text" name="linkedin" value="<?php echo esc_attr( get_the_author_meta( 'linkedin', $user->ID ) ); ?>" /></td>
+	            </tr>            <tr>
+	                <th>Autre</th>
+	                <td><input class="regular-text" id="autreRS" type="text" name="autreRS" value="<?php echo esc_attr( get_the_author_meta( 'autreRS', $user->ID ) ); ?>" /></td>
+	            </tr>
+	        </tbody>
+	    </table>
+	    
+	<?php }
+	add_action( 'show_user_profile', 'extra_user_profile_fields' );
+	add_action( 'edit_user_profile', 'extra_user_profile_fields' );
+endif; // extra_user_profile_fields
  
-    <h3>Titre du bloc d'information</h3>
-    <table class="form-table">
-        <tbody>
-            <tr>
-                <th>Stack</th>
-                <td><input class="regular-text" id="stack" type="text" name="stack" value="<?php echo esc_attr( get_the_author_meta( 'stack', $user->ID ) ); ?>" /></td>
-            </tr> 
-            <tr>
-                <th>Notes</th>
-                <td><input class="regular-text" id="notes" type="text" name="notes" value="<?php echo esc_attr( get_the_author_meta( 'notes', $user->ID ) ); ?>" /></td>
-            </tr> 
-            <tr>
-                <th>Citation</th>
-                <td><input class="regular-text" id="citation" type="text" name="citation" value="<?php echo esc_attr( get_the_author_meta( 'citation', $user->ID ) ); ?>" /></td>
-            </tr>            
-            <tr>
-                <th>Twitter</th>
-                <td><input class="regular-text" id="twitter" type="text" name="twitter" value="<?php echo esc_attr( get_the_author_meta( 'twitter', $user->ID ) ); ?>" /></td>
-            </tr>
-            <tr>
-                <th>Facebook</th>
-                <td><input class="regular-text" id="facebook" type="text" name="facebook" value="<?php echo esc_attr( get_the_author_meta( 'facebook', $user->ID ) ); ?>" /></td>
-            </tr>
-            <tr>
-                <th>Github</th>
-                <td><input class="regular-text" id="github" type="text" name="github" value="<?php echo esc_attr( get_the_author_meta( 'github', $user->ID ) ); ?>" /></td>
-            </tr>
-            <tr>
-                <th>LinkedIn</th>
-                <td><input class="regular-text" id="linkedin" type="text" name="linkedin" value="<?php echo esc_attr( get_the_author_meta( 'linkedin', $user->ID ) ); ?>" /></td>
-            </tr>            <tr>
-                <th>Autre</th>
-                <td><input class="regular-text" id="autreRS" type="text" name="autreRS" value="<?php echo esc_attr( get_the_author_meta( 'autreRS', $user->ID ) ); ?>" /></td>
-            </tr>
-        </tbody>
-    </table>
-    
-<?php }
-add_action( 'show_user_profile', 'extra_user_profile_fields' );
-add_action( 'edit_user_profile', 'extra_user_profile_fields' );
- 
- 
-function save_extra_user_profile_fields( $user_id ) {
- 
-    if ( !current_user_can( 'edit_user', $user_id ) ) { 
-        return false; 
-    }
-    update_user_meta( $user_id, 'stack', $_POST['stack'] );
-    update_user_meta( $user_id, 'notes', $_POST['notes'] );
-    update_user_meta( $user_id, 'citation', $_POST['citation'] );
-    update_user_meta( $user_id, 'twitter', $_POST['twitter'] );
-    update_user_meta( $user_id, 'facebook', $_POST['facebook'] );
-    update_user_meta( $user_id, 'github', $_POST['github'] );
-    update_user_meta( $user_id, 'linkedin', $_POST['linkedin'] );
-    update_user_meta( $user_id, 'autreRS', $_POST['autreRS'] );
-    
-}
-add_action( 'personal_options_update', 'save_extra_user_profile_fields' );
-add_action( 'edit_user_profile_update', 'save_extra_user_profile_fields' );
+if ( ! function_exists( 'save_extra_user_profile_fields' ) ) :
+	/**
+	 * Save new customized fields in user meta
+	 */ 
+	function save_extra_user_profile_fields( $user_id ) {
+	 
+	    if ( !current_user_can( 'edit_user', $user_id ) ) { 
+	        return false; 
+	    }
+	    update_user_meta( $user_id, 'stack', $_POST['stack'] );
+	    update_user_meta( $user_id, 'notes', $_POST['notes'] );
+	    update_user_meta( $user_id, 'citation', $_POST['citation'] );
+	    update_user_meta( $user_id, 'twitter', $_POST['twitter'] );
+	    update_user_meta( $user_id, 'facebook', $_POST['facebook'] );
+	    update_user_meta( $user_id, 'github', $_POST['github'] );
+	    update_user_meta( $user_id, 'linkedin', $_POST['linkedin'] );
+	    update_user_meta( $user_id, 'autreRS', $_POST['autreRS'] );
+	    
+	}
+	add_action( 'personal_options_update', 'save_extra_user_profile_fields' );
+	add_action( 'edit_user_profile_update', 'save_extra_user_profile_fields' );
+endif; // save_extra_user_profile_fields
 
 
-
-/*
-  -- add twitter -- 
-*/
-
-/*function twitter_add_custom_user_profile_fields( $user ) {
-?>
-  <h3><?php _e('Extra Profile Information', 'twitter'); ?></h3>
-
-  <table class="form-table">
-    <tr>
-      <th>
-        <label for="twitter"><?php _e('Twitter', 'twitter'); ?>
-      </label></th>
-      <td>
-        <input type="text" name="twitter" id="twitter" value="<?php echo esc_attr( get_the_author_meta( 'twitter', $user->ID ) ); ?>" class="regular-text" /><br />
-        <span class="description"><?php _e('Please enter your address twitter.', 'twitter'); ?></span>
-      </td>
-    </tr>
-  </table>
-<?php }
-
-function twitter_save_custom_user_profile_fields( $user_id ) {
-
-  if ( !current_user_can( 'edit_user', $user_id ) )
-    return FALSE;
-
-  update_usermeta( $user_id, 'twitter', $_POST['twitter'] );
-}
-
-add_action( 'show_user_profile', 'twitter_add_custom_user_profile_fields' );
-add_action( 'edit_user_profile', 'twitter_add_custom_user_profile_fields' );
-
-add_action( 'personal_options_update', 'twitter_save_custom_user_profile_fields' );
-add_action( 'edit_user_profile_update', 'twitter_save_custom_user_profile_fields' );*/
-
-/*
-  -- add facebook --
-*/
-
-/*function fb_add_custom_user_profile_fields( $user ) {
-?>
-  <table class="form-table">
-    <tr>
-      <th>
-        <label for="facebook"><?php _e('Facebook', 'facebook'); ?>
-      </label></th>
-      <td>
-        <input type="text" name="facebook" id="facebook" value="<?php echo esc_attr( get_the_author_meta( 'facebook', $user->ID ) ); ?>" class="regular-text" /><br />
-        <span class="description"><?php _e('Please enter your facebook.', 'facebook'); ?></span>
-      </td>
-    </tr>
-  </table>
-<?php }
-
-function fb_save_custom_user_profile_fields( $user_id ) {
-
-  if ( !current_user_can( 'edit_user', $user_id ) )
-    return FALSE;
-
-  update_usermeta( $user_id, 'facebook', $_POST['facebook'] );
-}
-
-add_action( 'show_user_profile', 'fb_add_custom_user_profile_fields' );
-add_action( 'edit_user_profile', 'fb_add_custom_user_profile_fields' );
-
-add_action( 'personal_options_update', 'fb_save_custom_user_profile_fields' );
-add_action( 'edit_user_profile_update', 'fb_save_custom_user_profile_fields' );
-*/
 
 //
 /**** VICTOR FUNCTION*/

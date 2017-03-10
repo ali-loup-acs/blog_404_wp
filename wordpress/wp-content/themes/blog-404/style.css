@@ -21,7 +21,7 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  
+
 }
 
 body {
@@ -1423,12 +1423,11 @@ textarea {
 }
 
 a {
-  color: #337ab7;
+  color: #000;
   text-decoration: none;
 }
 a:hover, a:focus {
-  color: #23527c;
-  text-decoration: underline;
+  color: #000;
 }
 a:focus {
   outline: 5px auto -webkit-focus-ring-color;
@@ -7464,6 +7463,17 @@ body {
 #main_home .bg_article .item a:hover,
 #main_home .bg_article .item a:visited {
   text-decoration: none;
+  text-transform: uppercase;
+}
+#main_home .authorDate {
+    margin-top:9%;
+}
+#main_home .authorDate .vcard {
+    font-family: "SpecialElite";
+}
+#main_home .readMore {
+  margin-top: 15%;
+  color:#337ab7;
   text-transform: uppercase;
 }
 #main_home .bg_chevron {
