@@ -12,21 +12,30 @@ function theme_enqueue_styles() {
 /**
  * Create a customized headr for homepage
  */
-function home_header_custom(){
+function home_header_custom_random($random=true){
 
 	$users = get_users( array( 'fields' => array( 'ID' ) ) );
-	shuffle($users);
-	//print_r($users);
+	if ( $random ) { shuffle($users); }
 
 	$html = '<div id="zoneFlex404">';
 
+	$unwanted_array = array(    'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+                            'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
+                            'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
+                            'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
+                            'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y' );
+	
+
 	for ($i = 0; $i < 10; $i++) {
 		$user_url = get_author_posts_url($users[$i]->ID);
-		$user = get_user_meta ( $user_id->ID);
-  		
-		$user_avatar = get_stylesheet_directory_uri()."/images/". strtolower($user["first_name"][0]) . strtolower($user["last_name"][0][0]) . "png";
-		//print_r($user_url." | ".$user_avatar);
-		$html.= '<div class="carte"><a href="'. $user_url .'"><img class="img-responsive" src="'. $user_avatar .'"></a></div>';
+
+		$user = get_user_meta ($users[$i]->ID);
+
+		$user_firstname = strtolower(strtr( $user["first_name"][0], $unwanted_array ));
+		$user_lastname = strtolower(strtr( $user["last_name"][0][0], $unwanted_array ));
+
+		$user = get_stylesheet_directory_uri()."/images/". $user_firstname . $user_lastname. ".png";
+		$html.= '<div class="carte"><a href="'. $user_url .'"><img class="img-responsive" src="'. $user .'"></a></div>';
 	}
 
 	$html .= '<div class="carteFixe"><a href="'. get_home_url() .'"><img class="img-responsive" src="'.get_stylesheet_directory_uri(). '/images/logo/404.png"></a></div>';
@@ -39,9 +48,14 @@ function home_header_custom(){
 			$html .= '<div class="carte">';
 		}
 		$user_url = get_author_posts_url($users[$i]->ID);
-		$user_avatar = get_avatar_url($users[$i]->ID);
-		//print_r($user_url." | ".$user_avatar);
-		$html.= '<a href="'. $user_url .'"><img class="img-responsive" src="'. $user_avatar .'"></a></div>';
+
+		$user = get_user_meta ( $users[$i]->ID);
+
+		$user_firstname = strtolower(strtr( $user["first_name"][0], $unwanted_array ));
+		$user_lastname = strtolower(strtr( $user["last_name"][0][0], $unwanted_array ));
+
+		$user = get_stylesheet_directory_uri()."/images/". $user_firstname . $user_lastname. ".png";
+		$html.= '<a href="'. $user_url .'"><img class="img-responsive" src="'. $user .'"></a></div>';
 	}
 	$html .= '</div>';
 
@@ -253,11 +267,11 @@ function comments_form( $args = array(), $post_id = null ) {
 	$html_req = ( $req ? " required='required'" : '' );
 	$html5    = 'html5' === $args['format'];
 	$fields   =  array(
-		'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+		'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label><br />' .
 		            '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="245"' . $aria_req . $html_req . ' /></p>',
-		'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+		'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label><br /> ' .
 		            '<input id="email" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" maxlength="100" aria-describedby="email-notes"' . $aria_req . $html_req  . ' /></p>',
-		'url'    => '<p class="comment-form-url"><label for="url">' . __( 'Website' ) . '</label> ' .
+		'url'    => '<p class="comment-form-url"><label for="url">' . __( 'Website' ) . '</label><br /> ' .
 		            '<input id="url" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" maxlength="200" /></p>',
 	);
 

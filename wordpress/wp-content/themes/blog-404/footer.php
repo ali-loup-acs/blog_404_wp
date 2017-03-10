@@ -71,11 +71,16 @@
             <article class="col-md-4">
                 <h3>Méta</h3>
                 <div class="row">
-                    <ul class="col-md-6">
+                    <!-- <ul class="col-md-6">
                         <li><a href="">Connexion</a></li>
                         <li><a href="">Flux RSS des articles</a></li>
                         <li><a href="">RSS des commentaires</a></li>
-                    </ul>
+                    </ul> -->
+                    <ul class="col-md-6">
+						<?php wp_register(); ?>
+						<li><?php wp_loginout(); ?></li>
+						<?php wp_meta(); ?>
+					</ul>
                 </div>
             </article>
     </section>
@@ -104,57 +109,10 @@
 					get_sidebar( 'footer' );
 			?>
 
-			<div id="site-generator">
-				<?php do_action( 'twentyeleven_credits' ); ?>
-				<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentyeleven' ) ); ?>" title="<?php esc_attr_e( 'Semantic Personal Publishing Platform', 'twentyeleven' ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentyeleven' ), 'WordPress' ); ?></a>
-			</div>
+			
 	<!-- </footer>#colophon -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-<!-- <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/js.js"></script> -->
-<script type="text/javascript">
-	/*function randString() {
-			var T=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
-			for(var i=T.length-1; i>=1; i--){
-				//j reçoit un nombre entier aléatoire entre 0 et i
-				var j = Math.floor(Math.random()*(i+1));
-
-				var tmp = T[i];
-				T[i] = T[j];
-				T[j] = tmp;
-			}
-	        return T;
-	    }
-
-		function constructHeader(){
-				var order = randString();
-				console.log(order);
-
-				var elem = document.getElementById('zoneSpeHome');
-				var html = '<div id="zoneFlex404">';
-				var i = 0;
-				for (i = 0; i < 10; i++) {
-						html += '<div class="carte"><a href="<?php //echo get_author_posts_url(1); ?>"><img class="img-responsive" src="<?php //echo get_stylesheet_directory_uri(); ?>/images/promo404-'+ order[i] +'.png"></a></div>';
-				}
-				html += '<div class="carteFixe"><a href="<?php //echo get_home_url() ?>"><img class="img-responsive" src="<?php //echo get_stylesheet_directory_uri(); ?>/images/logo/404.png"></a></div>';
-				for (i = 10; i < 17; i++) {
-					if(i==10) {
-						html += '<div class="carteFixe">';
-					}
-					else{
-						html += '<div class="carte">'
-					}
-
-					html += '<a href="#"><img class="img-responsive" src="<?php //echo get_stylesheet_directory_uri(); ?>/images/promo404-'+ order[i] +'.png"></a></div>';
-
-				}
-				html += '</div>';
-				elem.innerHTML = html;
-
-		}*/
-
-</script>
-
 </body>
 </html>
